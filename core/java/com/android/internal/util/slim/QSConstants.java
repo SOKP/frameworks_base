@@ -49,6 +49,7 @@ public class QSConstants {
     public static final String TILE_AMBIENT_DISPLAY = "ambient_display";
     public static final String TILE_SCREENSHOT = "screenshot";
     public static final String TILE_LIVE_DISPLAY = "live_display";
+	public static final String TILE_TRDS = "trds";
     public static final String TILE_SLIMACTION = "slimaction";
     public static final String TILE_APPCIRCLEBAR = "toggleAppCircleBar";
     public static final String TILE_GESTURE = "gesture";
@@ -98,6 +99,7 @@ public class QSConstants {
         TILES_AVAILABLE.add(TILE_AMBIENT_DISPLAY);
         TILES_AVAILABLE.add(TILE_SCREENSHOT);
         TILES_AVAILABLE.add(TILE_LIVE_DISPLAY);
+		TILES_AVAILABLE.add(TILE_TRDS);
         TILES_AVAILABLE.add(TILE_SLIMACTION);
         TILES_AVAILABLE.add(TILE_APPCIRCLEBAR);
         TILES_AVAILABLE.add(TILE_GESTURE);

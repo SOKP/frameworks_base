@@ -142,4 +142,6 @@
     <string name="select_application">Select application</string>
     <string name="lockscreen_target_empty">Empty</string>
 
+    <!-- TRDS -->
+    <string name="quick_settings_trds_label">TRDS</string>
 </resources>
