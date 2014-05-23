@@ -471,6 +471,10 @@ public class HeadsUpNotificationView extends LinearLayout implements SwipeHelper
     }
 
     @Override
+    public void onChildTriggered(View v) {
+    }
+
+    @Override
     public void onBeginDrag(View v) {
         animateSnoozeButton(false);
     }
