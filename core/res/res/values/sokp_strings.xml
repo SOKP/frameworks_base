@@ -58,5 +58,12 @@
     <string name="floating_window_snap_left">Snap left</string>
     <string name="floating_window_snap_right">Snap right</string>
     <string name="floating_window_minimize">Minimize</string>
+	
+	<!--Setting confirmation dialog-->
+  <java-symbol type="id" name="setting_confirmation_dialog_visual_hint" />
+  <java-symbol type="layout" name="setting_confirmation_dialog" />
+  <java-symbol type="string" name="setting_confirmation_ask_me_later" />
+  <java-symbol type="string" name="setting_confirmation_yes" />
+  <java-symbol type="string" name="setting_confirmation_no" />
 
 </resources>
