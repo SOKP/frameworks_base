@@ -137,6 +137,10 @@ public final class ParcelableConnection implements Parcelable {
         return mProperties;
     }
 
+    public int getProperties() {
+        return mProperties;
+    }
+
     public Uri getHandle() {
         return mAddress;
     }
