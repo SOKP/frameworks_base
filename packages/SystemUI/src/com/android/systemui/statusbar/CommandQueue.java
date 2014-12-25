@@ -65,6 +65,7 @@ public class CommandQueue extends IStatusBar.Stub {
     private static final int MSG_TOGGLE_SCREENSHOT                  = 23 << MSG_SHIFT;
     private static final int MSG_SET_PIE_TRIGGER_MASK               = 24 << MSG_SHIFT;
     private static final int MSG_SMART_PULLDOWN                     = 25 << MSG_SHIFT;
+    private static final int MSG_HIDE_HEADS_UP                      = 26 << MSG_SHIFT;
 
     public static final int FLAG_EXCLUDE_NONE = 0;
     public static final int FLAG_EXCLUDE_SEARCH_PANEL = 1 << 0;
@@ -114,6 +115,7 @@ public class CommandQueue extends IStatusBar.Stub {
         public void toggleScreenshot();
         public void setPieTriggerMask(int newMask, boolean lock);
         public void toggleSmartPulldown();
+        public void scheduleHeadsUpClose();
     }
 
     public CommandQueue(Callbacks callbacks, StatusBarIconList list) {
@@ -310,6 +312,13 @@ public class CommandQueue extends IStatusBar.Stub {
             mHandler.obtainMessage(MSG_SMART_PULLDOWN, 0, 0, null).sendToTarget();
         }
     }
+	
+	public void scheduleHeadsUpClose() {
+        synchronized (mList) {
+            mHandler.removeMessages(MSG_HIDE_HEADS_UP);
+            mHandler.sendEmptyMessage(MSG_HIDE_HEADS_UP);
+        }
+    }
 
     private final class H extends Handler {
         public void handleMessage(Message msg) {
@@ -413,6 +422,9 @@ public class CommandQueue extends IStatusBar.Stub {
                     break;
                 case MSG_SMART_PULLDOWN:
                     mCallbacks.toggleSmartPulldown();
+					break;
+                case MSG_HIDE_HEADS_UP:
+                    mCallbacks.scheduleHeadsUpClose();
                     break;
             }
         }
