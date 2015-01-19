@@ -19,7 +19,17 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-<!-- Privacy Guard -->
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_receiveProtectedSms">receive protected SMS</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_receiveProtectedSms">Allows the app to receive an incoming protected SMS.</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_modifyProtectedSmsList">modify protected SMS list</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_modifyProtectedSmsList">Allows the app to modify the protected sms address list.</string>
+
+    <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">enable or disable Privacy Guard</string>
     <string name="permdesc_changePrivacyGuardState">Allows the app to change whether another app runs with Privacy Guard. When an app is running with Privacy Guard, it will not have access to personal data such as contacts, call logs, or messages.</string>
     <string name="privacy_guard_notification">Privacy Guard active</string>
