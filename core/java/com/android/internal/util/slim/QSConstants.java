@@ -53,6 +53,7 @@ public class QSConstants {
     public static final String TILE_APPCIRCLEBAR = "toggleAppCircleBar";
     public static final String TILE_GESTURE = "gesture";
 	public static final String TILE_NAVBAR = "toggleNavBar";
+    public static final String TILE_BATTERY_SAVER = "battery_saver";
 
     // Order matters
     protected static final ArrayList<String> TILES_DEFAULT = new ArrayList<String>();
@@ -96,5 +97,6 @@ public class QSConstants {
         TILES_AVAILABLE.add(TILE_APPCIRCLEBAR);
         TILES_AVAILABLE.add(TILE_GESTURE);
         TILES_AVAILABLE.add(TILE_NAVBAR);
+        TILES_AVAILABLE.add(TILE_BATTERY_SAVER);
     }
 }

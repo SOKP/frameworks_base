@@ -17,7 +17,19 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<<<<<<< HEAD
 
+=======
+   	
+	<!-- mount notifications -->
+    <string name="ext_media_mounted_notification_title">mounted</string>
+    <string name="ext_media_unmounted_notification_title">unmounted</string>
+    <string name="ext_media_unmounted_notification_message">You can safely remove storage.</string>
+    <string name="ext_media_unmount_action">Unmount</string>
+    <string name="ext_media_mount_action">Mount</string>
+    <string name="ext_media_unmounting_notification_title">unmounting\u2026</string>
+    <string name="ext_media_mounting_notification_title">mounting\u2026</string>
+	
     <!-- App circle sidebar -->
     <string name="app_float_maximize_item_title">Maximize</string>
     <string name="app_float_item_title">Float view</string>
@@ -34,5 +46,9 @@
 	<!-- NavBar tile -->
     <string name="quick_settings_navbar_on">NavBar On</string>
     <string name="quick_settings_navbar_off">NavBar Off</string>
+	
+	<!-- Quick settings Custom Tiles -->
+	<string name="quick_settings_battery_saver">Battery saver</string>
+    <string name="quick_settings_battery_saver_off">Battery saver off</string>
 	
 </resources>
