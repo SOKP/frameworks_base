@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2015 The SlimRoms Project
+     Copyright (C) 2015 The Sonic Open Kang Project
      Copyright (C) 2012-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,29 +17,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Cardinal directions for the compass tile -->
-    <string-array name="cardinal_directions">
-        <item>N</item>  <!-- North -->
-        <item>NE</item> <!-- North east -->
-        <item>E</item>  <!-- East -->
-        <item>SE</item> <!-- South east -->
-        <item>S</item>  <!-- South -->
-        <item>SW</item> <!-- South west -->
-        <item>W</item>  <!-- West -->
-        <item>NW</item> <!-- North west -->
-    </string-array>
-
-<<<<<<< HEAD:packages/SystemUI/res/values/slim_arrays.xml
-    <array name="batterymeter_inverted_bolt_points" translatable="false">
-        <item>743</item><item>73</item>
-        <item>743</item><item>292</item>
-        <item>442</item><item>201</item>
-        <item>442</item><item>400</item>
-        <item>0</item><item>20</item>
-        <item>369</item><item>157</item>
-        <item>369</item><item>0</item>
-    </array>
-=======
     <!-- LiveDisplay drawables -->
     <string-array name="live_display_drawables" translatable="false">
         <item>@drawable/ic_livedisplay_auto</item>
@@ -47,6 +24,5 @@
         <item>@drawable/ic_livedisplay_night</item>
         <item>@drawable/ic_livedisplay_outdoor</item>
     </string-array>
->>>>>>> c2af4d7... livedisplay: Implement active display adjustment:packages/SystemUI/res/values/cm_arrays.xml
 
 </resources>
