@@ -342,7 +342,7 @@ public class InputMethodService extends AbstractInputMethodService {
     private int mAnimationEnterIndex;
     private int mAnimationExitIndex;
     private int mInterpolatorIndex;
-	private boolean mExitOnly;
+    private boolean mExitOnly;
     private boolean mReverseExit;
 
     private SettingsObserver mSettingsObserver;
