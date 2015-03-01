@@ -3423,6 +3423,12 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_GREETING = "status_bar_greeting";
+		
+		/**
+         * Status bar greeting timeout
+         * @hide
+         */
+        public static final String STATUS_BAR_GREETING_TIMEOUT = "status_bar_greeting_timeout";
 
         /**
          * Whether to prevent loud volume levels when headset is first plugged in.
