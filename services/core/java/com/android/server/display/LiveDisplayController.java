@@ -271,10 +271,6 @@ public class LiveDisplayController {
             temperature = getTwilightK(twilight);
         }
 
-        if (temperature == mColorTemperature) {
-            return;
-        }
-
         if (mAnimator != null) {
             mAnimator.cancel();
         }
