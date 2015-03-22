@@ -104,7 +104,7 @@ public final class ParcelableConnection implements Parcelable {
             int callSubstate) {
                mPhoneAccount = phoneAccount;
         mState = state;
-        mCapabilities = capabilities;
+        mConnectionCapabilities = capabilities;
         mProperties = 0;
         mAddress = address;
         mAddressPresentation = addressPresentation;
