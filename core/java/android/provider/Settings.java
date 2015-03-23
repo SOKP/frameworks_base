@@ -3752,6 +3752,12 @@ public final class Settings {
          */
         public static final String PIE_BUTTON_OUTLINE_COLOR = "pie_button_outline_color";
 
+         /**
+         * Recents Show/Hide Search Bar
+         * @hide
+         */
+        public static final String RECENTS_SHOW_HIDE_SEARCH_BAR = "recents_show_hide_search_bar";
+
         /**
          * Pie background color
          * @hide
