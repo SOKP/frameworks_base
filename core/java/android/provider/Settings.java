@@ -3417,6 +3417,12 @@ public final class Settings {
          * @hide
          */
          public static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
+		 
+		/**
+         * Status bar greeting
+         * @hide
+         */
+        public static final String STATUS_BAR_GREETING = "status_bar_greeting";
 
         /**
          * Whether to prevent loud volume levels when headset is first plugged in.
