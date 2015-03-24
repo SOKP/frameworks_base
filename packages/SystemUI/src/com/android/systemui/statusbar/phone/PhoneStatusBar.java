@@ -379,6 +379,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     private boolean mShowCarrierInPanel = false;
 
+    // SOKP logo
+    private boolean mSokpLogo;
+    private ImageView sokpLogo;
+
     // position
     int[] mPositionTmp = new int[2];
     boolean mExpandedVisible;
@@ -516,6 +520,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     UserHandle.USER_ALL);
 			resolver.registerContentObserver(Settings.System.getUriFor(		
                     Settings.System.NOTIFICATION_DRAWER_CLEAR_ALL_ICON_COLOR),
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_SOKP_LOGO),
                     false, this, UserHandle.USER_ALL);
             update();
         }
@@ -615,6 +621,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mVisualizerEnabled = Settings.Secure.getIntForUser(resolver,
                     Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, 1,
                     UserHandle.USER_CURRENT) != 0;
+					
+            mSokpLogo = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_SOKP_LOGO, 0, mCurrentUserId) == 1;
+            showSokpLogo(mSokpLogo);
         }
     }
 
@@ -3755,6 +3765,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
         }
     };
+
+    public void showSokpLogo(boolean show) {
+        if (mStatusBarView == null) return;
+        ContentResolver resolver = mContext.getContentResolver();
+        sokpLogo = (ImageView) mStatusBarView.findViewById(R.id.sokp_logo);
+        if (sokpLogo != null) {
+            sokpLogo.setVisibility(show ? (mSokpLogo ? View.VISIBLE : View.GONE) : View.GONE);
+        }
+    }
 
     private void resetUserExpandedStates() {
         ArrayList<Entry> activeNotifications = mNotificationData.getActiveNotifications();
