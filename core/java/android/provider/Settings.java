@@ -4151,6 +4151,12 @@ public final class Settings {
          * @hide
          */
         public static final String RECENTS_MAX_APPS = "recents_max_apps";
+		
+		/**
+         * show the membar in recents
+         *  @hide
+         */
+        public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
 
         /**
          * Whether recent panel gravity is left or right (default = Gravity.RIGHT).
