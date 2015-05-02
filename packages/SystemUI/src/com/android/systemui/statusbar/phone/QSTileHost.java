@@ -67,6 +67,7 @@ import com.android.systemui.qs.tiles.ScreenshotTile;
 import com.android.systemui.qs.tiles.ScreenTimeoutTile;
 import com.android.systemui.qs.tiles.AppCircleBarTile;
 import com.android.systemui.qs.tiles.WifiTile;
+import com.android.systemui.qs.tiles.NavBarTile;
 import com.android.systemui.settings.CurrentUserTracker;
 import com.android.systemui.statusbar.policy.BluetoothController;
 import com.android.systemui.statusbar.policy.CastController;
@@ -343,6 +344,8 @@ public class QSTileHost implements QSTile.Host {
                 return new AppCircleBarTile(this);
             case QSConstants.TILE_GESTURE:
                 return new GestureTile(this);
+            case QSConstants.TILE_NAVBAR:
+                return new NavBarTile(this);
             default:
                 throw new IllegalArgumentException("Bad tile spec: " + tileSpec);
         }
