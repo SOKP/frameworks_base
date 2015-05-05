@@ -30,7 +30,8 @@
 	<!-- Gesture Anywhere tile -->
 	<string name="quick_settings_gesture_on">Gesture Anywhere enabled</string>		
 	<string name="quick_settings_gesture_off">Gesture Anywhere disabled</string>
-
+    <string name="gestures_message">Draw your gesture here</string>
+	
 	<!-- NavBar tile -->
     <string name="quick_settings_navbar_on">NavBar On</string>
     <string name="quick_settings_navbar_off">NavBar Off</string>
