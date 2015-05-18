@@ -2236,6 +2236,12 @@ public final class Settings {
          * @hide
          */
         public static final String BATTERY_SAVER_MODE_COLOR = "battery_save_mode_color";
+		
+		/**
+		 * Color of the clear all icon in the notification drawer
+         * @hide
+         */
+        public static final String NOTIFICATION_DRAWER_CLEAR_ALL_ICON_COLOR = "nd_clear_all_icon_color";
 
         /**
          * Timeout for ambient display notification
