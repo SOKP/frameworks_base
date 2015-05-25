@@ -2357,7 +2357,8 @@ public abstract class BaseStatusBar extends SystemUI implements
             return false;
         }
 
-        if (mHeadsUpNotificationView.isSnoozed(sbn.getPackageName())) {
+        String pkg = sbn.getPackageName();
+        if (mHeadsUpNotificationView.isSnoozed(pkg)) {
             return false;
         }
 
@@ -2373,9 +2374,16 @@ public abstract class BaseStatusBar extends SystemUI implements
                 || notification.vibrate != null;
         boolean isHighPriority = sbn.getScore() >= INTERRUPTION_THRESHOLD;
         boolean isFullscreen = notification.fullScreenIntent != null;
+        //denying heads up by default
         int asHeadsUp = notification.extras.getInt(Notification.EXTRA_AS_HEADS_UP,
-                Notification.HEADS_UP_ALLOWED);
-        boolean isAllowed = asHeadsUp != Notification.HEADS_UP_NEVER;
+                Notification.HEADS_UP_NEVER);
+        PackageManager pmUser = getPackageManagerForUser(
+                sbn.getUser().getIdentifier());
+        //but if it's a system package, heads up should still be shown
+        boolean isSystemPackage = isThisASystemPackage(pkg, pmUser);
+        boolean isAllowed = (asHeadsUp != Notification.HEADS_UP_NEVER) || isSystemPackage;
+        if (DEBUG) Log.d(TAG, "package: "+pkg+", isSystem: "+isSystemPackage
+                +", asHeadsUp: "+asHeadsUp+", isAllowed: "+isAllowed);
         boolean accessibilityForcesLaunch = isFullscreen
                 && mAccessibilityManager.isTouchExplorationEnabled();
 
@@ -2391,8 +2399,9 @@ public abstract class BaseStatusBar extends SystemUI implements
                 && !keyguardIsShowing;
 
         if (!interrupt) {
-            boolean isHeadsUpPackage = mNoMan.getHeadsUpNotificationsEnabledForPackage(
-                    sbn.getPackageName(), sbn.getUid()) != Notification.HEADS_UP_NEVER;
+            boolean isHeadsUpPackage = (mNoMan.getHeadsUpNotificationsEnabledForPackage(
+                    pkg, sbn.getUid()) != Notification.HEADS_UP_NEVER) || isSystemPackage;
+            if (DEBUG) Log.d(TAG, "package: "+pkg+", isHeadsUpPackage: "+isHeadsUpPackage);
 
             boolean isExpanded = false;
             if (mStackScroller != null) {
@@ -2407,7 +2416,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                     && !keyguardIsShowing;
 
             if (interrupt) {
-                mHeadsUpPackageName = sbn.getPackageName();
+                mHeadsUpPackageName = pkg;
             }
         }
 
