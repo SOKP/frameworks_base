@@ -29,7 +29,6 @@
         <item>NW</item> <!-- North west -->
     </string-array>
 
-<<<<<<< HEAD:packages/SystemUI/res/values/slim_arrays.xml
     <array name="batterymeter_inverted_bolt_points" translatable="false">
         <item>743</item><item>73</item>
         <item>743</item><item>292</item>
@@ -39,15 +38,5 @@
         <item>369</item><item>157</item>
         <item>369</item><item>0</item>
     </array>
-=======
-    <!-- LiveDisplay drawables -->
-    <string-array name="live_display_drawables" translatable="false">
-        <item>@drawable/ic_livedisplay_auto</item>
-        <item>@drawable/ic_livedisplay_off</item>
-        <item>@drawable/ic_livedisplay_day</item>
-        <item>@drawable/ic_livedisplay_night</item>
-        <item>@drawable/ic_livedisplay_outdoor</item>
-    </string-array>
->>>>>>> c2af4d7... livedisplay: Implement active display adjustment:packages/SystemUI/res/values/cm_arrays.xml
 
 </resources>
