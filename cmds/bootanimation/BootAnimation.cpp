@@ -720,7 +720,6 @@ bool BootAnimation::movie()
 
     mZip->endIteration(cookie);
 
-#ifndef CONTINUOUS_SPLASH
     // clear screen
     glShadeModel(GL_FLAT);
     glDisable(GL_DITHER);
@@ -730,7 +729,6 @@ bool BootAnimation::movie()
     glClear(GL_COLOR_BUFFER_BIT);
 
     eglSwapBuffers(mDisplay, mSurface);
-#endif
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glEnable(GL_TEXTURE_2D);
