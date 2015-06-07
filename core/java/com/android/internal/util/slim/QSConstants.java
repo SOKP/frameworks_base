@@ -52,7 +52,6 @@ public class QSConstants {
     public static final String TILE_SLIMACTION = "slimaction";
     public static final String TILE_APPCIRCLEBAR = "toggleAppCircleBar";
     public static final String TILE_GESTURE = "gesture";
-    public static final String TILE_HEADS_UP = "heads_up";
 
     // Order matters
     protected static final ArrayList<String> TILES_DEFAULT = new ArrayList<String>();
@@ -95,6 +94,5 @@ public class QSConstants {
         TILES_AVAILABLE.add(TILE_SLIMACTION);
         TILES_AVAILABLE.add(TILE_APPCIRCLEBAR);
         TILES_AVAILABLE.add(TILE_GESTURE);
-        TILES_AVAILABLE.add(TILE_HEADS_UP);
     }
 }
