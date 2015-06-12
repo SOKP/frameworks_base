@@ -64,7 +64,6 @@ public class TorchService extends ITorchService.Stub {
     private static final int DISPATCH_STATE_CHANGE = 1;
     private static final int DISPATCH_AVAILABILITY_CHANGED = 2;
 
-    private static final int NOTIFICATION_ID = 1001;
     private static final String ACTION_TURN_FLASHLIGHT_OFF =
             "com.android.server.TorchService.ACTION_TURN_FLASHLIGHT_OFF";
 
@@ -96,6 +95,16 @@ public class TorchService extends ITorchService.Stub {
     private Surface mSurface;
 
     private boolean mReceiverRegistered;
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (ACTION_TURN_FLASHLIGHT_OFF.equals(intent.getAction())) {
+                mHandler.post(mKillFlashlightRunnable);
+            } else if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
+                setNotificationShown(true);
+            }
+        }
+    };
 
     private static class CameraUserRecord {
         IBinder token;
@@ -127,6 +136,54 @@ public class TorchService extends ITorchService.Stub {
         if (mTorchCameraId != -1) {
             ensureHandler();
             mCameraManager.registerAvailabilityCallback(mAvailabilityCallback, mHandler);
+        }
+    }
+
+    private void setNotificationShown(boolean show) {
+        final long callingIdentity = Binder.clearCallingIdentity();
+        try {
+            NotificationManager nm = (NotificationManager)
+                    mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+            if (show) {
+                nm.notify(R.string.notification_flashlight_on_title, buildNotification());
+            } else {
+                nm.cancel(R.string.notification_flashlight_on_title);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(callingIdentity);
+        }
+    }
+
+    private Notification buildNotification() {
+        Intent fireMe = new Intent(ACTION_TURN_FLASHLIGHT_OFF);
+        fireMe.setPackage(mContext.getPackageName());
+
+        return new Notification.Builder(mContext)
+                .setContentTitle(
+                        mContext.getString(R.string.notification_flashlight_on_title))
+                .setContentText(
+                        mContext.getString(R.string.notification_flashlight_on_summary))
+                .setAutoCancel(false)
+                .setOngoing(true)
+                .setVisibility(Notification.VISIBILITY_PUBLIC)
+                .setSmallIcon(R.drawable.ic_signal_flashlight_disable)
+                .setContentIntent(PendingIntent.getBroadcast(mContext, 0, fireMe, 0))
+                .build();
+    }
+
+    private void setListenForScreenOff(boolean listen) {
+        if (listen && !mReceiverRegistered) {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(ACTION_TURN_FLASHLIGHT_OFF);
+            filter.addAction(Intent.ACTION_SCREEN_ON);
+            mContext.registerReceiver(mReceiver, filter);
+            mReceiverRegistered = true;
+        } else if (!listen) {
+            if (mReceiverRegistered) {
+                mContext.unregisterReceiver(mReceiver);
+                mReceiverRegistered = false;
+            }
+            setNotificationShown(false);
         }
     }
 
@@ -186,9 +243,10 @@ public class TorchService extends ITorchService.Stub {
     public synchronized void setTorchEnabled(boolean enabled) {
         mContext.enforceCallingOrSelfPermission(
                 Manifest.permission.ACCESS_TORCH_SERVICE, null);
+
         if (mTorchEnabled != enabled) {
             mTorchEnabled = enabled;
-            postNotification(enabled);
+            setListenForScreenOff(enabled);
             postUpdateFlashlight();
         }
     }
@@ -316,48 +374,6 @@ public class TorchService extends ITorchService.Stub {
         return null;
     }
 
-    private BroadcastReceiver mFlashlightOffReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(ACTION_TURN_FLASHLIGHT_OFF)) {
-                mHandler.post(mKillFlashlightRunnable);
-            }
-        }
-    };
-
-    private void postNotification(boolean show) {
-        final long identity = Binder.clearCallingIdentity();
-        Intent off = new Intent(ACTION_TURN_FLASHLIGHT_OFF);
-        off.setPackage(mContext.getPackageName());
-
-        Notification.Builder builder = new Notification.Builder(mContext);
-        builder.setContentTitle(mContext.getString(R.string.notification_flashlight_on_title));
-        builder.setContentText(mContext.getString(R.string.notification_flashlight_on_summary));
-        builder.setAutoCancel(false);
-        builder.setVisibility(Notification.VISIBILITY_PUBLIC);
-        builder.setSmallIcon(R.drawable.ic_signal_flashlight_disable);
-        builder.setContentIntent(PendingIntent.getBroadcast(mContext, 0, off, 0));
-        Notification notif = builder.build();
-
-        NotificationManager manager = (NotificationManager)
-                mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (show) {
-            IntentFilter filter = new IntentFilter();
-            filter.addAction(ACTION_TURN_FLASHLIGHT_OFF);
-            mContext.registerReceiver(mFlashlightOffReceiver, filter);
-            mReceiverRegistered = true;
-            manager.notify(NOTIFICATION_ID, notif);
-        } else {
-            if (mReceiverRegistered) {
-                mContext.unregisterReceiver(mFlashlightOffReceiver);
-                mReceiverRegistered = false;
-            }
-            manager.cancel(NOTIFICATION_ID);
-        }
-        Binder.restoreCallingIdentity(identity);
-    }
-
     private void updateFlashlight(boolean forceDisable) {
         try {
             boolean enabled;
@@ -404,7 +420,7 @@ public class TorchService extends ITorchService.Stub {
     }
 
     private void teardownTorch() {
-        postNotification(false);
+        setListenForScreenOff(false);
         dispatchStateChange(false);
         if (mCameraDevice != null) {
             mCameraDevice.close();
