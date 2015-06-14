@@ -64,12 +64,19 @@ public class PolicyHelper {
     }
 
     public static Drawable getPowerMenuIconImage(Context context,
-            String clickAction, String customIcon) {
+            String clickAction, String customIcon, boolean enabled) {
         int resId = -1;
         Drawable d = null;
         PackageManager pm = context.getPackageManager();
         if (pm == null) {
             return null;
+        }
+
+        int color = context.getResources().getColor(
+                com.android.internal.R.color.global_menu_icon);
+        if (enabled) {
+            color = context.getResources().getColor(
+                    com.android.internal.R.color.global_menu_icon_enabled);
         }
 
         Resources systemUiResources;
@@ -110,8 +117,7 @@ public class PolicyHelper {
             if (resId > 0) {
                 d = systemUiResources.getDrawable(resId);
                 if (d != null) {
-                    d = ImageHelper.getColoredDrawable(d, 
-                            context.getResources().getColor(com.android.internal.R.color.dslv_icon_dark));
+                    d = ImageHelper.getColoredDrawable(d, color);
                 }
             }
         } else if (customIcon != null && !customIcon.equals(ActionConstants.ICON_EMPTY)) {
@@ -128,8 +134,7 @@ public class PolicyHelper {
         } else if (clickAction.startsWith("**")) {
             d = getPowerMenuSystemIcon(context, clickAction);
             if (d != null) {
-                d = ImageHelper.getColoredDrawable(d, 
-                            context.getResources().getColor(com.android.internal.R.color.dslv_icon_dark));
+                d = ImageHelper.getColoredDrawable(d, color);
             }
         }
         return d;
