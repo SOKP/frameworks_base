@@ -64,4 +64,7 @@
     <string name="setting_confirmation_yes">Yes</string>
     <string name="setting_confirmation_no">No</string>
 
+	<!-- Default fingerprint name when a new fingerprint is added -->
+    <string name="fingerprint_default_name">Fingerprint <xliff:g id="number">%d</xliff:g></string>
+
 </resources>

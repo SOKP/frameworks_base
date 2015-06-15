@@ -131,4 +131,7 @@
   <java-symbol type="string" name="setting_confirmation_yes" />
   <java-symbol type="string" name="setting_confirmation_no" />
 
+  <!-- Fingerprint default name -->
+  <java-symbol type="string" name="fingerprint_default_name" />
+	
 </resources>
