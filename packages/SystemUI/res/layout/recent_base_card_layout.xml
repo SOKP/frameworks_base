@@ -48,8 +48,7 @@
                 android:id="@+id/card_header_layout"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                card:card_header_layout_resourceID="@layout/recent_base_header_layout" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
