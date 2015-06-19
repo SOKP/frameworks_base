@@ -46,6 +46,7 @@ import android.view.WindowManagerGlobal;
 import android.view.WindowManagerPolicyControl;
 import android.widget.Toast;
 
+import com.android.internal.util.sokp.Helpers;
 import com.android.internal.statusbar.IStatusBarService;
 
 import java.net.URISyntaxException;
@@ -228,6 +229,12 @@ public class Action {
                         break;
                 }
                 return;
+
+            } else if (action.equals(ActionConstants.ACTION_RESTARTUI)) {
+                if (isKeyguardShowing && isKeyguardSecure) {
+                    return;
+                }
+                Helpers.restartSystemUI();
             } else if (action.equals(ActionConstants.ACTION_KILL)) {
                 if (isKeyguardShowing) {
                     return;
