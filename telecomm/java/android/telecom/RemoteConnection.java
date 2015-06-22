@@ -552,15 +552,6 @@ public final class RemoteConnection {
     /**
      * @return A bitmask of the properties of the {@code RemoteConnection}, as defined in
      *         {@link CallProperties}.
-     * @hide
-     */
-    public int getCallProperties() {
-        return mCallProperties;
-    }
-
-    /**
-     * @return A bitmask of the properties of the {@code RemoteConnection}, as defined in
-     *         {@link CallProperties}.
      *  @hide
      */
     public int getCallProperties() {
@@ -905,15 +896,6 @@ public final class RemoteConnection {
         for (Callback c : mCallbacks) {
             c.onConnectionCapabilitiesChanged(this, connectionCapabilities);
             c.onCallCapabilitiesChanged(this, connectionCapabilities);
-        }
-    }
-    /**
-     * @hide
-     */
-    void setCallProperties(int callProperties) {
-        mCallProperties = callProperties;
-        for (Callback c : mCallbacks) {
-            c.onCallPropertiesChanged(this, callProperties);
         }
     }
 
