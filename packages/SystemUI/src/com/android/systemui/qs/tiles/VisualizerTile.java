@@ -89,7 +89,7 @@ public class VisualizerTile extends QSTile<QSTile.State>
                 Resources r = mContext.getResources();
 
                 mVisualizer = new VisualizerView(mContext);
-                mVisualizer.setEnabled(false);
+                mVisualizer.setEnabled(true);
                 mVisualizer.setVisibility(View.VISIBLE);
                 mVisualizer.setAlpha(1.f);
 
@@ -112,7 +112,7 @@ public class VisualizerTile extends QSTile<QSTile.State>
                 mStaticVisualizerIcon = new ImageView(mContext);
                 mStaticVisualizerIcon.setId(android.R.id.icon);
                 mStaticVisualizerIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                mStaticVisualizerIcon.setImageResource(R.drawable.ic_qs_visualizer_static);
+                mStaticVisualizerIcon.setImageResource(R.drawable.ic_qs_dolby);
                 mStaticVisualizerIcon.setVisibility(View.VISIBLE);
                 mStaticVisualizerIcon.setAlpha(0.f);
 
