@@ -2390,7 +2390,14 @@ public abstract class BaseStatusBar extends SystemUI implements
                 || notification.vibrate != null;
         boolean isHighPriority = sbn.getScore() >= INTERRUPTION_THRESHOLD;
         boolean isFullscreen = notification.fullScreenIntent != null;
-        //denying heads up by default
+
+        // incoming call should be allowed to process
+        // to handle non-intrusive ui correctly
+        int defHeadsUp = (isIncomingCall(pkg) && isNonIntrusiveEnabled())
+                ? Notification.HEADS_UP_ALLOWED
+                : Notification.HEADS_UP_NEVER;
+				
+	    //denying heads up by default	
         int asHeadsUp = notification.extras.getInt(Notification.EXTRA_AS_HEADS_UP,
                 Notification.HEADS_UP_NEVER);
         PackageManager pmUser = getPackageManagerForUser(
@@ -2443,6 +2450,21 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
         if (DEBUG) Log.d(TAG, "interrupt: " + interrupt);
         return interrupt;
+    }
+
+    private boolean isIncomingCall(String packageName) {
+        return packageName.equals("com.android.dialer");
+    }
+
+    private boolean isNonIntrusiveEnabled() {
+        final String result = Settings.System.getString(mContext.getContentResolver(),
+            Settings.System.USE_NON_INTRUSIVE_CALL);
+
+        // should be on by default
+        if (result == null)
+            return true;
+
+        return !result.equals("0");
     }
 
     public void setInteracting(int barWindow, boolean interacting) {
