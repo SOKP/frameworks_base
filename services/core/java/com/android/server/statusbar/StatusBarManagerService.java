@@ -538,7 +538,7 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
                 mBar.scheduleHeadsUpClose();
             } catch (RemoteException ex) {}
             }
-    
+    }
     @Override
     public void toggleSmartPulldown() {
         if (mBar != null) {
