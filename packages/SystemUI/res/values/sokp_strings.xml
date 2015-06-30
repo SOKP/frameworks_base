@@ -57,5 +57,8 @@
 	
 	<!-- Title shown in recents popup for showing app launch in floating mode -->
     <string name="recent_float_mode_title">Floating mode</string>
+	
+	<!-- Fingerprint -->
+    <string name="fingerprint_try_again_hint">Please scan again</string>
 
 </resources>

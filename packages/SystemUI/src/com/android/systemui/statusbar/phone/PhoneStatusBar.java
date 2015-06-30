@@ -4502,6 +4502,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mKeyguardIndicationController.showTransientIndication(R.string.phone_hint);
     }
 
+    public void onFingerprintHintStarted() {
+        mKeyguardIndicationController.showTransientIndication(R.string.fingerprint_try_again_hint);
+    }
+
     public void onTrackingStopped(boolean expand) {
         if (mState == StatusBarState.KEYGUARD || mState == StatusBarState.SHADE_LOCKED) {
             if (!expand /*&& !mUnlockMethodCache.isMethodInsecure()*/) {
