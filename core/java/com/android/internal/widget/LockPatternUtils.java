@@ -717,7 +717,7 @@ public class LockPatternUtils {
      * @param pattern The new pattern to save.
      */
      public void saveLockGesture(Gesture gesture) {
-         this.saveLockGesture(gesture, false, getCurrentOrCallingUserId());
+         this.saveLockGesture(gesture, false);
      }
 
     /**
@@ -725,8 +725,9 @@ public class LockPatternUtils {
      * @param pattern The new pattern to save.
      * @param isFallback Specifies if this is a fallback to biometric weak
      */
-    public void saveLockGesture(Gesture gesture, boolean isFallback, int userId) {
+    public void saveLockGesture(Gesture gesture, boolean isFallback) {
         try {
+            int userId = getCurrentOrCallingUserId();
             getLockSettings().setLockGesture(gesture, userId);
             DevicePolicyManager dpm = getDevicePolicyManager();
             if (gesture != null) {
@@ -752,6 +753,7 @@ public class LockPatternUtils {
             Log.e(TAG, "Couldn't save lock gesture " + re);
         }
     }
+
 
     /**
      * Compute the password quality from the given password string.
