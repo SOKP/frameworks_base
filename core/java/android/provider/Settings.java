@@ -4336,6 +4336,13 @@ public final class Settings {
          * @hide
          */
         public static final String SLIM_ACTION_FLOATS = "slim_action_floats";
+		
+        /**
+         * Launch Appcirclebar apps in floating window or not
+         *
+         * @hide
+         */
+        public static final String APPCIRCLEBAR_FLOATING = "appcirclebar_floating";
 
 		/**
          * Settings to backup. This is here so that it's in the same place as the settings
