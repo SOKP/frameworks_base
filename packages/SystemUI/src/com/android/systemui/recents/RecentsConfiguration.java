@@ -403,7 +403,7 @@ public class RecentsConfiguration {
                                    Rect searchBarSpaceBounds) {
         // Return empty rects if search is not enabled and Search bar is disabled
         searchBarAppEnabled = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.RECENTS_SHOW_HIDE_SEARCH_BAR, 0) == 1;
+                Settings.System.RECENTS_SHOW_SEARCH_BAR, 0) == 1;
         int searchBarSize = searchBarSpaceHeightPx;
         if (!searchBarAppEnabled) {
             searchBarSize = 0;
