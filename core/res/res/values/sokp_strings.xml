@@ -59,11 +59,9 @@
     <string name="floating_window_snap_right">Snap right</string>
     <string name="floating_window_minimize">Minimize</string>
 	
-	<!--Setting confirmation dialog-->
-  <java-symbol type="id" name="setting_confirmation_dialog_visual_hint" />
-  <java-symbol type="layout" name="setting_confirmation_dialog" />
-  <java-symbol type="string" name="setting_confirmation_ask_me_later" />
-  <java-symbol type="string" name="setting_confirmation_yes" />
-  <java-symbol type="string" name="setting_confirmation_no" />
+	<!-- Setting confirmation dialog strings. Shown when any UI interaction can be modified by user input -->
+    <string name="setting_confirmation_ask_me_later">Ask later</string>
+    <string name="setting_confirmation_yes">Yes</string>
+    <string name="setting_confirmation_no">No</string>
 
 </resources>
