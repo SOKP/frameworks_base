@@ -1996,7 +1996,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         return entry;
     }
 
-    protected void addNotificationViews(Entry entry, RankingMap ranking) {
+    protected void addNotificationViews(NotificationData.Entry entry, RankingMap ranking) {
         if (entry == null) {
             return;
         }
@@ -2017,7 +2017,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         int maxKeyguardNotifications = getMaxKeyguardNotifications();
         mKeyguardIconOverflowContainer.getIconsView().removeAllViews();
 
-        ArrayList<Entry> activeNotifications = mNotificationData.getActiveNotifications();
+        ArrayList<NotificationData.Entry> activeNotifications = mNotificationData.getActiveNotifications();
         final int N = activeNotifications.size();
 
         int visibleNotifications = 0;
@@ -2120,7 +2120,7 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         final String key = notification.getKey();
         boolean wasHeadsUp = isHeadsUp(key);
-        Entry oldEntry;
+        NotificationData.Entry oldEntry;
         if (wasHeadsUp) {
             oldEntry = mHeadsUpNotificationView.getEntry();
         } else {
@@ -2252,7 +2252,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             if (wasHeadsUp) {
                 if (shouldInterrupt) {
                     if (DEBUG) Log.d(TAG, "rebuilding heads up for key: " + key);
-                    Entry newEntry = new Entry(notification, null);
+                    NotificationData.Entry newEntry = new NotificationData.Entry(notification, null);
                     ViewGroup holder = mHeadsUpNotificationView.getHolder();
                     if (inflateViewsForHeadsUp(newEntry, holder)) {
                         mHeadsUpNotificationView.showNotification(newEntry);
