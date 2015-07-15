@@ -133,9 +133,6 @@
     <!-- Kill app permission -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
 
-    <!-- Heads up -->
-    <uses-permission android:name="android.permission.CHANGE_HEADS_UP_STATE" />
-
     <!-- Weather -->
     <uses-permission android:name="com.cyanogenmod.lockclock.permission.READ_WEATHER" />
 

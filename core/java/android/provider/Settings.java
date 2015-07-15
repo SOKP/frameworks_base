@@ -2229,27 +2229,6 @@ public final class Settings {
          */
         @Deprecated
         public static final String QS_USE_MAIN_TILES = "sysui_qs_main_tiles";
-
-        /**
-         * Defines global heads up enable/disable switch.
-         *
-         * @hide
-         */
-        public static final String HEADS_UP_GLOBAL_SWITCH = "heads_up_global_switch";
-
-        /**
-         * Defines global heads up snooze time if user want to snooze it.
-         *
-         * @hide
-         */
-        public static final String HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
-
-        /**
-         * Defines the global heads up notification decay
-         *
-         * @hide
-         */
-        public static final String HEADS_UP_NOTIFCATION_DECAY = "heads_up_notification_decay";
 		
 		/**
 		 * Defines the status and navigation bar color is battery safe mode is enabled.
@@ -2933,14 +2912,6 @@ public final class Settings {
          * @hide
          */
         public static final String VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
-
-        /**
-         * Whether the incoming call should be shown as non-intrusive notification.
-         * The value is boolean (1 or 0).
-         *    0 - Fullscreen
-         *    1 - Non-intrusive
-         */
-        public static final String USE_NON_INTRUSIVE_CALL = "use_non_intrusive_call";
 
         /**
          * Whether the audible DTMF tones are played by the dialer when dialing. The value is
@@ -4416,7 +4387,6 @@ public final class Settings {
             SIP_RECEIVE_CALLS,
             POINTER_SPEED,
             VIBRATE_WHEN_RINGING,
-            USE_NON_INTRUSIVE_CALL,
             RINGTONE,
             LOCK_TO_APP_ENABLED,
             NOTIFICATION_SOUND,

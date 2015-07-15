@@ -529,7 +529,7 @@ public class NotificationStackScrollLayout extends ViewGroup
         mInterceptDelegateEnabled = interceptDelegateEnabled;
     }
 
-    public void onChildDismissed(View v, boolean direction) {
+    public void onChildDismissed(View v) {
         if (mDismissAllInProgress) {
             return;
         }
@@ -2053,10 +2053,6 @@ public class NotificationStackScrollLayout extends ViewGroup
             // lets make sure nothing is in the overlay anymore
             getOverlay().clear();
         }
-    }
-
-    public boolean getIsExpanded() {
-        return mIsExpanded;
     }
 
     private void setIsExpanded(boolean isExpanded) {
