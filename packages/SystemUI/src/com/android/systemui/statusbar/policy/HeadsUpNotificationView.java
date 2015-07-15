@@ -134,10 +134,6 @@ public class HeadsUpNotificationView extends FrameLayout implements SwipeHelper.
             mContentHolder.setAlpha(mMaxAlpha);
             mContentHolder.addView(mHeadsUp.row);
 
-            if (mBelowContentContainer != null) {
-                mContentHolder.addView(mBelowContentContainer);
-            }
-
             sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED);
 
             mSwipeHelper.snapChild(mContentHolder, 1f);
@@ -437,7 +433,7 @@ public class HeadsUpNotificationView extends FrameLayout implements SwipeHelper.
         info.setTouchableInsets(ViewTreeObserver.InternalInsetsInfo.TOUCHABLE_INSETS_REGION);
         info.touchableRegion.set(mTmpTwoArray[0], mTmpTwoArray[1],
                 mTmpTwoArray[0] + mContentHolder.getWidth(),
-                mTmpTwoArray[1] + mContentHolder.getHeight() + (mSnoozeButton.getHeight() / 2));
+                mTmpTwoArray[1] + mContentHolder.getHeight());
     }
 
     public void escalate() {
