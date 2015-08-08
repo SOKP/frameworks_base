@@ -525,6 +525,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     UserHandle.USER_ALL);
 			resolver.registerContentObserver(Settings.System.getUriFor(		
                     Settings.System.NOTIFICATION_DRAWER_CLEAR_ALL_ICON_COLOR),
+					false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SOKP_LOGO),
                     false, this, UserHandle.USER_ALL);
