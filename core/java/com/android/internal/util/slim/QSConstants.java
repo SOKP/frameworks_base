@@ -57,6 +57,7 @@ public class QSConstants {
     public static final String TILE_BATTERY_SAVER = "battery_saver";
     public static final String TILE_MUSIC = "music";
     public static final String TILE_EXPANDED_DESKTOP = "expanded_desktop";
+    public static final String TILE_VOLUME = "volume_panel";
     public static final String TILE_SLIM_FLOATS = "slim_floats";
     public static final String TILE_SYSTEMUI_RESTART = "reboot_systemui";
 
@@ -107,6 +108,7 @@ public class QSConstants {
         TILES_AVAILABLE.add(TILE_BATTERY_SAVER);
         TILES_AVAILABLE.add(TILE_MUSIC);
         TILES_AVAILABLE.add(TILE_EXPANDED_DESKTOP);
+        TILES_AVAILABLE.add(TILE_VOLUME);
 		TILES_AVAILABLE.add(TILE_SLIM_FLOATS);
         TILES_AVAILABLE.add(TILE_SYSTEMUI_RESTART);
     }

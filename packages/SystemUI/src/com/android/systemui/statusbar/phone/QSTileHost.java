@@ -68,6 +68,7 @@ import com.android.systemui.qs.tiles.SystemUIRestartTile;
 import com.android.systemui.qs.tiles.UsbTetherTile;
 import com.android.systemui.qs.tiles.SlimActionTile;
 import com.android.systemui.qs.tiles.VisualizerTile;
+import com.android.systemui.qs.tiles.VolumeTile;
 import com.android.systemui.qs.tiles.ScreenshotTile;
 import com.android.systemui.qs.tiles.ScreenTimeoutTile;
 import com.android.systemui.qs.tiles.AppCircleBarTile;
@@ -330,6 +331,8 @@ public class QSTileHost implements QSTile.Host {
                 return new LteTile(this);
             case QSConstants.TILE_VISUALIZER:
                 return new VisualizerTile(this);
+            case QSConstants.TILE_VOLUME:
+                return new VolumeTile(this);
             case QSConstants.TILE_SCREEN_TIMEOUT:
                 return new ScreenTimeoutTile(this);
             case QSConstants.TILE_USB_TETHER:
