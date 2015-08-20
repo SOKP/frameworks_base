@@ -23,6 +23,9 @@
 
     <!-- Doze: alternate schedule -->
     <string name="doze_pulse_schedule_alternate" translatable="false">1s</string>
+	
+	<!-- TRDS tile: number of days to show after feature is used. -->
+    <integer name="days_to_show_trds_tile">14</integer>
 
 </resources>
 

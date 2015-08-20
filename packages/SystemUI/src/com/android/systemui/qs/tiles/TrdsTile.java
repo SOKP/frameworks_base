@@ -45,14 +45,17 @@ public class TrdsTile extends QSTile<QSTile.BooleanState> {
         mSetting = new SecureSetting(mContext, mHandler,
                 Secure.UI_THEME_MODE) {
             @Override
-            protected void handleValueChanged(int value) {
-                mUsageTracker.trackUsage();
+            protected void handleValueChanged(int value, boolean observedChange) {
+                if (value != 0 || observedChange) {
+                    mUsageTracker.trackUsage();
+                }
                 if (mListening) {
                     handleRefreshState(value);
                 }
             }
         };
-        mUsageTracker = new UsageTracker(host.getContext(), TrdsTile.class);
+        mUsageTracker = new UsageTracker(host.getContext(), TrdsTile.class,
+                R.integer.days_to_show_trds_tile);
         if (mSetting.getValue() != 0 && !mUsageTracker.isRecentlyUsed()) {
             mUsageTracker.trackUsage();
         }
@@ -113,7 +116,7 @@ public class TrdsTile extends QSTile<QSTile.BooleanState> {
         state.visible = enabled || mUsageTracker.isRecentlyUsed();
         state.value = enabled;
         state.label = mContext.getString(R.string.quick_settings_trds_label);
-        state.iconId = enabled ? R.drawable.ic_qs_trds_on : R.drawable.ic_qs_trds_off;
+        state.icon = ResourceIcon.get(state.value ? R.drawable.ic_qs_trds_on : R.drawable.ic_qs_trds_off);
     }
 
 }
