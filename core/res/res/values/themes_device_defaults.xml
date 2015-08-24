@@ -453,7 +453,7 @@ easier.
 
     <!-- Variant of the DeviceDefault (light) theme that has a solid (opaque) action bar with an
     inverse color profile. -->
-    <style name="Theme.DeviceDefault.Light.DarkActionBar" parent="Theme.Material.Light.DarkActionBar" />
+    <style name="Theme.DeviceDefault.Light.DarkActionBar" parent="Theme.Material" />
 
     <!-- Variant of {@link #Theme_DeviceDefault_Light} with no action bar -->
     <style name="Theme.DeviceDefault.Light.NoActionBar" parent="Theme.Material.Light.NoActionBar"  />
