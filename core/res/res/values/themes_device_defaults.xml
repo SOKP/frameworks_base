@@ -541,7 +541,7 @@ easier.
     <style name="Theme.DeviceDefault.Settings" parent="Theme.Material.Settings" />
 
     <!-- Theme used for the intent picker activity. -->
-    <style name="Theme.DeviceDefault.Resolver" parent="Theme.Material.Light">
+    <style name="Theme.DeviceDefault.Resolver" parent="Theme.Material">
         <item name="windowIsTranslucent">true</item>
         <item name="windowNoTitle">true</item>
         <item name="windowBackground">@color/transparent</item>
