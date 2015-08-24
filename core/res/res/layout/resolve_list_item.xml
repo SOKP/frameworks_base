@@ -24,7 +24,7 @@
               android:minHeight="?attr/listPreferredItemHeightSmall"
               android:paddingTop="4dp"
               android:paddingBottom="4dp"
-              android:background="?attr/activatedBackgroundIndicator">
+              android:background="#ff212121">
 
     <!-- Activity icon when presenting dialog
          Size will be filled in by ResolverActivity -->
