@@ -134,4 +134,6 @@
   <!-- Fingerprint default name -->
   <java-symbol type="string" name="fingerprint_default_name" />
 	
+	<!-- Wifi AP Disabled from Subscription change -->
+    <java-symbol type="string" name="subscription_change_disabled_wifi_ap" />
 </resources>
