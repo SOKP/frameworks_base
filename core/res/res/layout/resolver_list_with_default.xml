@@ -102,7 +102,7 @@
             android:paddingBottom="8dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-          android:background="#ff212121"
+          android:background="#ff212121" >
             <Button android:id="@+id/button_once"
                     android:layout_width="wrap_content"
                     android:layout_gravity="start"
