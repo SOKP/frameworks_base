@@ -2217,7 +2217,7 @@ message MetricsEvent {
     // END OF AOSP CONSTANTS
 
     // Devinfo
-    DEVINFO = 411;
+    DEVINFO = 497;
 
   }
 }
